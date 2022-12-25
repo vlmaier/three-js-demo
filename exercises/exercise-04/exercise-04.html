@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+    <title>Exercise #04</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/CSS/style.css"/>
+</head>
+<body onload="init()">
+<script src="../../resources/Three/build/three.min.js" type="text/javascript"></script>
+<script src="exercise-04.js" type="text/javascript"></script>
+<h1>Exercise #04</h1>
+<hr/>
+<div style="background-color: white;">
+    <table cols="3">
+        <tr>
+            <td colspan="3"><h2>Object</h2></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>loc (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_loc_x" value="0" onchange="updateObjLoc()"/></td>
+            <td><input type="text" id="obj_loc_y" value="0" onchange="updateObjLoc()"/></td>
+            <td><input type="text" id="obj_loc_z" value="0" onchange="updateObjLoc()"/></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>rot (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_rot_x" value="0" onchange="updateObjRot()"/></td>
+            <td><input type="text" id="obj_rot_y" value="0" onchange="updateObjRot()"/></td>
+            <td><input type="text" id="obj_rot_z" value="0" onchange="updateObjRot()"/></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>scale (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_scale_x" value="1" onchange="updateObjScale()"/></td>
+            <td><input type="text" id="obj_scale_y" value="1" onchange="updateObjScale()"/></td>
+            <td><input type="text" id="obj_scale_z" value="1" onchange="updateObjScale()"/></td>
+        </tr>
+    </table>
+</div>
+<div style="background-color: white; top: 325px;">
+    <table cols="3">
+        <tr>
+            <td colspan="3"><h2>Camera</h2></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>loc (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_loc_x" value="0" onchange="updateCamLoc()"/></td>
+            <td><input type="text" id="cam_loc_y" value="0" onchange="updateCamLoc()"/></td>
+            <td><input type="text" id="cam_loc_z" value="0" onchange="updateCamLoc()"/></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>rot (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_rot_x" value="0" onchange="updateCamRot()"/></td>
+            <td><input type="text" id="cam_rot_y" value="0" onchange="updateCamRot()"/></td>
+            <td><input type="text" id="cam_rot_z" value="0" onchange="updateCamRot()"/></td>
+        </tr>
+        <tr>
+            <td colspan="3"><p>scale (x,y,z)</p></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_scale_x" value="1" onchange="updateCamScale()"/></td>
+            <td><input type="text" id="cam_scale_y" value="1" onchange="updateCamScale()"/></td>
+            <td><input type="text" id="cam_scale_z" value="1" onchange="updateCamScale()"/></td>
+        </tr>
+    </table>
+</div>
+<div style="background-color: white; right: 10px;">
+    <table cols="3">
+        <tr>
+            <td colspan="3"><h2>Model Matrix Object</h2></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_mat_00" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_01" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_02" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_03" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_mat_10" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_11" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_12" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_13" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_mat_20" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_21" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_22" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_23" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="obj_mat_30" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_31" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_32" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="obj_mat_33" value="0" disabled="disabled"/></td>
+        </tr>
+    </table>
+</div>
+<div style="background-color: white; right: 10px; top: 220px;">
+    <table cols="3">
+        <tr>
+            <td colspan="3"><h2>Model Matrix Camera</h2></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_mat_00" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_01" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_02" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_03" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_mat_10" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_11" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_12" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_13" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_mat_20" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_21" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_22" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_23" value="0" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="cam_mat_30" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_31" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_32" value="0" disabled="disabled"/></td>
+            <td><input type="text" id="cam_mat_33" value="0" disabled="disabled"/></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
